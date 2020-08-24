@@ -49,6 +49,16 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.get('/signup', (req, res) => {
+	// check session variable...if user is logged in redirect to homepage
+	if (req.session.loggedIn) {
+		res.redirect('/');
+		return;
+	}
+	// otherwise render login page
+	res.render('signup');
+});
+
 router.get('/post/:id', (req, res) => {
     Post.findOne({
         where: {
