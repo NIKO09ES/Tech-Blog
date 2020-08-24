@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
 const { Post, User, Comment } = require('../../models');
-const withAuth = require('../../utils/auth')
+// const withAuth = require('../../utils/auth')
 
 router.get('/', (req,res) => {
     console.log('===================');
@@ -37,6 +37,7 @@ router.get('/', (req,res) => {
 
 //finds one post
 router.get('/:id', (req, res) => {
+    console.log('test')
     Post.findOne({
       where: {
         id: req.params.id
@@ -75,10 +76,10 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/', (req, res) => {
     Post.create({
         title: req.body.title,
-        post_content: req.body.post_url,
+        post_content: req.body.post_content,
         user_id: req.session.user_id
     })
     .then(dbPostData => res.json(dbPostData))
@@ -89,7 +90,7 @@ router.post('/', withAuth, (req, res) => {
 });
 
 // update the title
-router.put('/:id', withAuth, (req, res) => {
+router.put('/:id', (req, res) => {
     Post.update(
       {
         title: req.body.title
@@ -114,7 +115,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 //Delete Post
-router.delete('/:id', withAuth, (req, res) => {
+router.delete('/:id', (req, res) => {
     Post.destroy({
         where: {
         id: req.params.id

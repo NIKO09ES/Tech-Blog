@@ -5,29 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech Blog</title>
-  <link rel="stylesheet" href="/assets/stylesheets/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
-<body class="bg-img">
-
-  <header>
-    <h1>
-      <a href="/">Tech Blog</a>
-    </h1>
-    <nav>
-      {{#if loggedIn}}
-      <a href="/dashboard">My Dashboard</a>
-      <button id="logout" class="btn-no-style">Logout</button>
-      {{else}}
-      <a href="/login">Login</a>
-      {{/if}}
+<body class="flex-column min-100-vh">
+  <header class="hero flex-shrink-0">
+    <nav class="navbar">
+      <ul class="nav">
+        <li class="nav-item"><a class="nav-link active text-white" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active text-white" href="/dashboard">Dashboard</a></li>
+        {{#if loggedIn}}
+        <li><button id="logout" class="logout-link btn btn-link text-white">Logout</button></li>
+        {{else}}
+        <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
+        {{/if}}
+      </ul>
+      </br>
+      <h1>The Tech Blog</h1>
     </nav>
   </header>
-  <div class="wrapper">
-    {{{ body }}}
-  </div>
+  <main class="flex-grow-1">
+    {{{body}}}
+  </main>
   <footer>
-    Brought to you by <a class="button" href="https://github.com/jessicajernigan" target="_blank"> jessicajernigan</a>
+    Made with ❤️ by <a class="button" href="https://github.com/NIKO09ES" target="_blank"> Nicolas Esquivel</a>
   </footer>
 
   {{#if loggedIn}}

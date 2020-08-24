@@ -1,21 +1,19 @@
 <article>
-    <a href="/dashboard"> &larr; Back to dashboard</a>
-    <h2>
+    <h2 class="text-white bg-dark">
         Edit Post
     </h2>
     <form class="edit-post-form">
         <div>
             <input name="post-title" type="text" value="{{post.title}}" />
-            <span>({{format_url post.post_url}})</span>
+            <span>({{post.post_content}})</span>
         </div>
         <div>
-            <a href="/blogpost/{{post.id}}">{{post.comments.length}}
+            <a href="/post/{{post.id}}">{{post.comments.length}}
                 {{format_plural "comment" post.comments.length}}</a>
-                {{!-- revizar --}}
         </div>
 
-        <button type="submit">Save Post</button>
-        <button type="button" class="delete-post-btn">Delete post</button>
+        <button type="submit" class="btn btn-secondary">Save Post</button>
+        <button type="button" class="delete-post-btn btn btn-secondary">Delete post</button>
     </form>
     {{> comments post.comments }}
 </article>
